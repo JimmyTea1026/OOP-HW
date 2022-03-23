@@ -5,14 +5,17 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.event.MouseInputListener;
 
+import org.w3c.dom.NodeList;
+
 import model.Line;
 import model.Shape;
 import model.basicObject;
 import model.classObject;
+import model.node;
 import model.usecaseObject;
-
 import java.awt.*;
 import utility.curState;
+import utility.nodeType;
 
 public class canvasListener implements MouseInputListener{
     private curState appState;
@@ -21,6 +24,7 @@ public class canvasListener implements MouseInputListener{
     public ArrayList <basicObject> objList;
     public ArrayList <basicObject> selectedList;
     public ArrayList <Line> lineList;
+    public ArrayList <node> nodeList = new ArrayList <node>();
     private int X, Y;
     public canvasListener(curState state, JPanel c, ArrayList shape, ArrayList obj, ArrayList line, ArrayList select){
         appState = state;
@@ -31,8 +35,28 @@ public class canvasListener implements MouseInputListener{
         selectedList = select;
     }
 
-    public ArrayList getSelectedList(){
-        return selectedList;
+    private void selectSomething(int X, int Y){
+        selectedList.clear();
+        for(int i = 0; i < objList.size(); i++){
+            basicObject obj = objList.get(i);
+            obj.beSelected(false);
+        }
+        // 最新的obj在list最後面，若滑鼠位置有兩個以上的obj，會選到最後新增，也就是最上面的obj
+        for(int i = objList.size()-1; i >= 0; i--){
+            basicObject obj = objList.get(i);
+            
+            if(obj.getx1() <= X && X <= obj.getx2() &&
+                obj.gety1() <= Y && Y <= obj.gety2()){
+                ArrayList<basicObject> a = obj.getNodePointer().traverse();
+                for(int j = 0; j < a.size(); j++){
+                    a.get(j).beSelected(true);
+                    selectedList.add(a.get(j));
+                }
+                break;
+            }
+        }
+        System.out.println(selectedList);
+        canvas.repaint();
     }
 
     @Override
@@ -42,23 +66,7 @@ public class canvasListener implements MouseInputListener{
         Y = e.getY();
         switch(appState.currentState){
             case SELECT:
-                selectedList.clear();
-                for(int i = 0; i < objList.size(); i++){
-                    basicObject obj = objList.get(i);
-                    obj.beSelected(false);
-                }
-                // 最新的obj在list最後面，若滑鼠位置有兩個以上的obj，會選到最後新增，也就是最上面的obj
-                for(int i = objList.size()-1; i >= 0; i--){
-                    basicObject obj = objList.get(i);
-                    if(obj.getx1() <= X && X <= obj.getx2() &&
-                        obj.gety1() <= Y && Y <= obj.gety2()){
-                        obj.beSelected(true);
-                        selectedList.add(obj);
-                        canvas.repaint();
-                        break;
-                    }
-                }
-                System.out.println(selectedList);
+                selectSomething(X, Y);
                 break;
 
             case GENERATION:
@@ -75,22 +83,34 @@ public class canvasListener implements MouseInputListener{
 
             case CLASS:
                 classObject newClassObj = new classObject(e.getX(), e.getY());
+                node newNode = new node(nodeType.type.LEAF);
+                newNode.setContent(newClassObj);
+                newClassObj.setNodePointer(newNode);
+
+                nodeList.add(newNode);
                 ShapeList.add(newClassObj);
                 objList.add(newClassObj);
+
                 int dep = ShapeList.indexOf(newClassObj);
                 newClassObj.setDepth(dep);
-                canvas.repaint();
                 
+                canvas.repaint();
                 break;
 
             case USECASS:
                 usecaseObject newUsecaseObj = new usecaseObject(e.getX(), e.getY());
+                newNode = new node(nodeType.type.LEAF);
+                newNode.setContent(newUsecaseObj);
+                newUsecaseObj.setNodePointer(newNode);
+
+                nodeList.add(newNode);
                 ShapeList.add(newUsecaseObj);
                 objList.add(newUsecaseObj);
+
                 dep = ShapeList.indexOf(newUsecaseObj);
                 newUsecaseObj.setDepth(dep);
-                canvas.repaint();
 
+                canvas.repaint();
                 break;
 
             case GROUP:
@@ -115,13 +135,20 @@ public class canvasListener implements MouseInputListener{
     @Override
     public void mousePressed(MouseEvent e) {
         // TODO Auto-generated method stub
+        X = e.getX();
+        Y = e.getY();
+        switch(appState.currentState){
+            case SELECT:
+                selectSomething(X, Y);
+        }
         
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
         // TODO Auto-generated method stub
-        
+        X = e.getX();
+        Y = e.getY();
     }
 
     @Override
