@@ -13,6 +13,7 @@ public abstract class basicObject extends Shape{
     public void rename(String newName){
         name = newName;
     }
+    
     public void beSelected(boolean b){
         selected = b;
     }

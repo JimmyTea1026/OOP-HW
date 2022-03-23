@@ -19,6 +19,7 @@ public class GUI {
     private JToggleButton selectBtn;
     public ArrayList <Shape> ShapeList = new ArrayList<Shape>();
     public ArrayList <basicObject> objList = new ArrayList<basicObject>();
+    public ArrayList <basicObject> selectedList = new ArrayList<basicObject>();
     public ArrayList <Line> lineList = new ArrayList<Line>();
 
     public GUI(curState s) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException{
@@ -37,9 +38,9 @@ public class GUI {
         cp.setLayout(null);
         cp.setPreferredSize(new Dimension(1024, 680));;
         jFrame.setVisible(true); 
+        this.addCanvas();
         this.addMenuBtn();
         this.addMenuBar();
-        this.addCanvas();
         jFrame.pack();
     }
     
@@ -49,9 +50,9 @@ public class GUI {
         JMenuItem ungroupBtn = new JMenuItem("ungroup");
         JMenuItem renameBtn = new JMenuItem("rename");
         JMenuBar menuBar = new JMenuBar(); 
-        groupBtn.addActionListener(new groupActionListener(appState, selectBtn));
-        ungroupBtn.addActionListener(new ungroupActionListener(appState, selectBtn));
-        renameBtn.addActionListener(new renameActionListener(appState, selectBtn));
+        groupBtn.addActionListener(new groupActionListener(appState, selectBtn, selectedList));
+        ungroupBtn.addActionListener(new ungroupActionListener(appState, selectBtn, selectedList));
+        renameBtn.addActionListener(new renameActionListener(appState, selectBtn, selectedList, canvas));
 
         editBtn.add(groupBtn);
         editBtn.add(ungroupBtn);
@@ -107,10 +108,11 @@ public class GUI {
     
     private void addCanvas(){
         canvas = new MyCanvas(ShapeList);
-        canvas.addMouseListener(new canvasMouseListener(appState, canvas, ShapeList, objList, lineList));
+        canvas.addMouseListener(new canvasListener(appState, canvas, ShapeList, objList, lineList, selectedList));
         canvas.setBackground(Color.lightGray);
         canvas.setBounds(180, 10, 830, 650);
         cp.add(canvas);
     }
-
+    
 }
+

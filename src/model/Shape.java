@@ -25,6 +25,11 @@ public abstract class Shape {
         return y2;
     }
 
+    public void setDepth(int d){
+        depth = d;
+        System.out.println(depth);
+    }
+
     public void resetXY(int newX1,int newX2,int newY1,int newY2){
         x1 = newX1;
         x2 = newX2;

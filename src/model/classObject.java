@@ -38,7 +38,7 @@ public class classObject extends basicObject{
         int[] portX = {(x1+x2)/2-offset, x2-offset/2, (x1+x2)/2-offset, x1-offset};
         int[] portY = {y1-offset, (y1+y2)/2-offset, y2-offset, (y1+y2)/2-offset};
         for(int i = 0; i < 4; i++){
-            g.drawOval(portX[i], portY[i], 8, 8);
+            g.fillOval(portX[i], portY[i], 8, 8);
         }
     }
     
