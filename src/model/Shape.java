@@ -30,10 +30,8 @@ public abstract class Shape {
         System.out.println(depth);
     }
 
-    public void resetXY(int newX1,int newX2,int newY1,int newY2){
+    public void resetXY(int newX1,int newY1){
         x1 = newX1;
-        x2 = newX2;
         y1 = newY1;
-        y2 = newY2;
     }
 }

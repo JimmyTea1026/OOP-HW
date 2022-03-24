@@ -19,8 +19,8 @@ public class GUI {
     private JToggleButton selectBtn;
     public ArrayList <Shape> ShapeList = new ArrayList<Shape>();
     public ArrayList <basicObject> objList = new ArrayList<basicObject>();
-    public ArrayList <basicObject> selectedList = new ArrayList<basicObject>();
     public ArrayList <Line> lineList = new ArrayList<Line>();
+    public ArrayList <basicObject> selectedList = new ArrayList<basicObject>();
 
     public GUI(curState s) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException{
         appState = s;
