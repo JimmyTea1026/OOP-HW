@@ -84,7 +84,7 @@ public class GUI {
         classBtn.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
         usecaseBtn.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
 
-        selectBtn.addActionListener(new selectActionListener(appState));
+        selectBtn.addActionListener(new selectActionListener(canvas, ShapeList, objList, lineList, selectedList));
         associationBtn.addActionListener(new assciationActionListener(appState));
         generationBtn.addActionListener(new generationActionListener(appState));
         compositionBtn.addActionListener(new compositionActionListener(appState));

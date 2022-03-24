@@ -66,7 +66,7 @@ public class canvasListener implements MouseInputListener{
         Y = e.getY();
         switch(appState.currentState){
             case SELECT:
-                selectSomething(X, Y);
+                //selectSomething(X, Y);
                 break;
 
             case GENERATION:
@@ -137,10 +137,6 @@ public class canvasListener implements MouseInputListener{
         // TODO Auto-generated method stub
         X = e.getX();
         Y = e.getY();
-        switch(appState.currentState){
-            case SELECT:
-                selectSomething(X, Y);
-        }
         
     }
 
