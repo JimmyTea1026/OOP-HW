@@ -1,23 +1,22 @@
 package controller;
 
-import utility.*;
-import utility.curState.state;
 import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.JPanel;
-import model.Line;
-import model.Shape;
 import model.basicObject;
+import model.node;
 
+public class assciationActionListener implements ActionListener{
+    private JPanel canvas;
+    private selectCanvasActionListener AL;
 
-public class assciationActionListener extends myActionListener{
-
-    public assciationActionListener(curState s){
-        super(s);
+    public assciationActionListener(JPanel c, ArrayList <basicObject> b, ArrayList <node> sel){
+        canvas = c;
+        AL = new selectCanvasActionListener(c, b, sel);
     }
     
-    public void actionPerformed(ActionEvent e){  
-        super.appState.currentState = state.ASSCIATION;
-        
+    public void actionPerformed(ActionEvent e){
+        canvas.removeMouseListener(canvas.getMouseListeners()[0]);
+        canvas.addMouseListener(AL);
     }     
 }

@@ -83,7 +83,7 @@ public class canvasListener implements MouseInputListener{
 
             case CLASS:
                 classObject newClassObj = new classObject(e.getX(), e.getY());
-                node newNode = new node(nodeType.type.LEAF);
+                node newNode = new node(nodeType.type.ROOT);
                 newNode.setContent(newClassObj);
                 newClassObj.setNodePointer(newNode);
 
@@ -99,7 +99,7 @@ public class canvasListener implements MouseInputListener{
 
             case USECASS:
                 usecaseObject newUsecaseObj = new usecaseObject(e.getX(), e.getY());
-                newNode = new node(nodeType.type.LEAF);
+                newNode = new node(nodeType.type.ROOT);
                 newNode.setContent(newUsecaseObj);
                 newUsecaseObj.setNodePointer(newNode);
 

@@ -6,6 +6,7 @@ import controller.*;
 import model.Line;
 import model.Shape;
 import model.basicObject;
+import model.node;
 import utility.curState;
 
 import java.awt.*;
@@ -20,7 +21,7 @@ public class GUI {
     public ArrayList <Shape> ShapeList = new ArrayList<Shape>();
     public ArrayList <basicObject> objList = new ArrayList<basicObject>();
     public ArrayList <Line> lineList = new ArrayList<Line>();
-    public ArrayList <basicObject> selectedList = new ArrayList<basicObject>();
+    public ArrayList <node> selectedList = new ArrayList<node>();
 
     public GUI(curState s) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException{
         appState = s;
@@ -84,12 +85,12 @@ public class GUI {
         classBtn.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
         usecaseBtn.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
 
-        selectBtn.addActionListener(new selectActionListener(canvas, ShapeList, objList, lineList, selectedList));
-        associationBtn.addActionListener(new assciationActionListener(appState));
-        generationBtn.addActionListener(new generationActionListener(appState));
-        compositionBtn.addActionListener(new compositionActionListener(appState));
-        classBtn.addActionListener(new classActionListener(appState));
-        usecaseBtn.addActionListener(new usecaseActionListener(appState));
+        selectBtn.addActionListener(new selectActionListener(canvas, objList, selectedList));
+        // associationBtn.addActionListener(new assciationActionListener(appState));
+        // generationBtn.addActionListener(new generationActionListener(appState));
+        // compositionBtn.addActionListener(new compositionActionListener(appState));
+        classBtn.addActionListener(new classActionListener(canvas, objList));
+        usecaseBtn.addActionListener(new usecaseActionListener(canvas, objList));
 
         btnGroup.add(selectBtn);
         btnGroup.add(associationBtn);
@@ -107,7 +108,7 @@ public class GUI {
     }
     
     private void addCanvas(){
-        canvas = new MyCanvas(ShapeList);
+        canvas = new MyCanvas(objList, lineList);
         canvas.addMouseListener(new canvasListener(appState, canvas, ShapeList, objList, lineList, selectedList));
         canvas.setBackground(Color.lightGray);
         canvas.setBounds(180, 10, 830, 650);

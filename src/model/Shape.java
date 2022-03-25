@@ -1,7 +1,6 @@
 package model;
 
 import java.awt.Graphics;
-import java.awt.Point;
 
 public abstract class Shape {
     protected int x1, x2, y1, y2;
@@ -27,7 +26,6 @@ public abstract class Shape {
 
     public void setDepth(int d){
         depth = d;
-        System.out.println(depth);
     }
 
     public void resetXY(int newX1,int newY1){

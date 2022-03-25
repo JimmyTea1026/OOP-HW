@@ -15,22 +15,31 @@ public class node {
     }
 
     public void setContent(basicObject b){
-        if (this.type == nodeType.type.LEAF){
-            this.content = b;
+        this.content = b;
+    }
+
+    public node getRoot(){
+        if(this.type != nodeType.type.ROOT){
+            return this.parentNode.getRoot();
+        }
+        else{
+            return this;
         }
     }
 
     public ArrayList<basicObject> traverse(){
         ArrayList<basicObject> ret = new ArrayList<basicObject>();
-        if(this.type == nodeType.type.ROOT){
-
-        }
-        else if(this.type == nodeType.type.LEAF){
+        if (childList == null){
             ret.add(this.content);
             return ret;
         }
-        
-        return null;
+        else{
+            for(int i = 0; i < this.childList.size(); i++){
+                ret.addAll(childList.get(i).traverse());
+            }
+            return ret;
+        }
+
     }
 
     public basicObject getContent(){
