@@ -6,7 +6,6 @@ import javax.swing.*;
 import javax.swing.event.MouseInputListener;
 import utility.nodeType;
 import model.basicObject;
-import model.classObject;
 import model.node;
 import model.usecaseObject;
 
@@ -26,7 +25,7 @@ public class usecaseCanvasActionListener implements MouseInputListener{
         Y = e.getY();
         // TODO Auto-generated method stub
         usecaseObject newUsecaseObj = new usecaseObject(e.getX(), e.getY());
-        node newNode = new node(nodeType.type.ROOT);
+        node newNode = new node(nodeType.type.LEAF);
         newNode.setContent(newUsecaseObj);
         newUsecaseObj.setNodePointer(newNode);
         objList.add(newUsecaseObj);

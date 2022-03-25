@@ -47,7 +47,7 @@ public class canvasListener implements MouseInputListener{
             
             if(obj.getx1() <= X && X <= obj.getx2() &&
                 obj.gety1() <= Y && Y <= obj.gety2()){
-                ArrayList<basicObject> a = obj.getNodePointer().traverse();
+                ArrayList<basicObject> a = obj.getNodePointer().getAllObj();
                 for(int j = 0; j < a.size(); j++){
                     a.get(j).beSelected(true);
                     selectedList.add(a.get(j));

@@ -11,7 +11,7 @@ public class selectCanvasActionListener implements MouseInputListener{
     private ArrayList <basicObject> objList;
     private ArrayList <node> selectedList;
     private JPanel canvas;
-    int X, Y;
+    int X1, Y1, X2, Y2;
 
     public selectCanvasActionListener(JPanel c, ArrayList <basicObject> b, ArrayList <node> sel){
         canvas = c;
@@ -21,8 +21,8 @@ public class selectCanvasActionListener implements MouseInputListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        X = e.getX();
-        Y = e.getY();
+        X1 = e.getX();
+        Y1 = e.getY();
         // TODO Auto-generated method stub
         selectedList.clear();
         for(int i = 0; i < objList.size(); i++){
@@ -32,33 +32,70 @@ public class selectCanvasActionListener implements MouseInputListener{
         // 最新的obj在list最後面，若滑鼠位置有兩個以上的obj，會選到最後新增，也就是最上面的obj
         for(int i = objList.size()-1; i >= 0; i--){
             basicObject obj = objList.get(i);  
-            if(obj.getx1() <= X && X <= obj.getx2() &&
-                obj.gety1() <= Y && Y <= obj.gety2()){
+            if(obj.getx1() <= X1 && X1 <= obj.getx2() &&
+                obj.gety1() <= Y1 && Y1 <= obj.gety2()){
                 node root;
                 ArrayList<basicObject> allObj;
                 root = obj.getNodePointer().getRoot();
-                allObj = root.traverse();
-                selectedList.add(root);
+                allObj = root.getAllObj();
                 for(int j = 0; j < allObj.size(); j++){
                     allObj.get(j).beSelected(true);
                 }
+                selectedList.add(root);
                 break;
             }
         }
-        System.out.println(selectedList);
         canvas.repaint();
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
         // TODO Auto-generated method stub
+        X1 = e.getX();
+        Y1 = e.getY();
         
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
         // TODO Auto-generated method stub
-        
+        X2 = e.getX();
+        Y2 = e.getY();
+        if(X1 > X2){
+            int temp = X1;
+            X1 = X2;
+            X2 = temp;
+        }
+        if(Y1 > Y2){
+            int temp = Y1;
+            Y1 = Y2;
+            Y2 = temp;
+        }
+
+        selectedList.clear();
+        for(int i = 0; i < objList.size(); i++){
+            basicObject obj = objList.get(i);
+            obj.beSelected(false);
+        }
+
+        for(int i = 0; i < objList.size(); i++){
+            basicObject obj = objList.get(i);
+            if(X2 >= obj.getx2() && obj.getx1() >= X1 &&
+               Y1 <= obj.gety1() && obj.gety2() <= Y2){
+                    node root;
+                    ArrayList<basicObject> allObj;
+                    root = obj.getNodePointer().getRoot();
+                    allObj = root.getAllObj();
+                    for(int j = 0; j < allObj.size(); j++){
+                        allObj.get(j).beSelected(true);
+                    }
+
+                    if(!selectedList.contains(root)){
+                        selectedList.add(root);
+                    }
+                }
+        }
+        canvas.repaint();
     }
 
     @Override

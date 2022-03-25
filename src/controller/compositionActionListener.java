@@ -10,14 +10,12 @@ import model.Shape;
 import model.basicObject;
 
 
-public class compositionActionListener extends myActionListener{
+public class compositionActionListener implements ActionListener{
 
     public compositionActionListener(curState s){
-        super(s);
     }
     
     public void actionPerformed(ActionEvent e){  
-        super.appState.currentState = state.COMPOSITION;
         
     }     
 }

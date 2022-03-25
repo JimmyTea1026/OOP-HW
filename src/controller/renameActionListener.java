@@ -1,7 +1,6 @@
 package controller;
 
 import utility.*;
-import utility.curState.state;
 import view.renameWindow;
 
 import java.awt.event.*;
@@ -15,7 +14,7 @@ public class renameActionListener implements ActionListener{
     public ArrayList <node> selectedList;
     JPanel canvas;
 
-    public renameActionListener(curState s, JToggleButton b, ArrayList<node> select, JPanel c){
+    public renameActionListener(JToggleButton b, ArrayList<node> select, JPanel c){
         selectBtn = b;
         selectedList = select;
         canvas = c;
@@ -25,7 +24,7 @@ public class renameActionListener implements ActionListener{
         selectBtn.setSelected(true);
         selectBtn.doClick();
         if(selectedList.size() == 1){
-            ArrayList <basicObject> n = selectedList.get(0).traverse();
+            ArrayList <basicObject> n = selectedList.get(0).getAllObj();
             if (n.size() == 1){
                 renameWindow renameWindow = new renameWindow();
                 String objname = renameWindow.getObjName();

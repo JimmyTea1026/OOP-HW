@@ -10,14 +10,12 @@ import model.Shape;
 import model.basicObject;
 
 
-public class generationActionListener extends myActionListener{
+public class generationActionListener implements ActionListener{
 
     public generationActionListener(curState s){
-        super(s);
     }
     
     public void actionPerformed(ActionEvent e){  
-        super.appState.currentState = state.GENERATION;
         
     }     
 }

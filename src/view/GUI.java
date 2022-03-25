@@ -51,9 +51,9 @@ public class GUI {
         JMenuItem ungroupBtn = new JMenuItem("ungroup");
         JMenuItem renameBtn = new JMenuItem("rename");
         JMenuBar menuBar = new JMenuBar(); 
-        groupBtn.addActionListener(new groupActionListener(appState, selectBtn, selectedList));
-        ungroupBtn.addActionListener(new ungroupActionListener(appState, selectBtn, selectedList));
-        renameBtn.addActionListener(new renameActionListener(appState, selectBtn, selectedList, canvas));
+        groupBtn.addActionListener(new groupActionListener(selectBtn, selectedList));
+        ungroupBtn.addActionListener(new ungroupActionListener(selectBtn, selectedList));
+        renameBtn.addActionListener(new renameActionListener(selectBtn, selectedList, canvas));
 
         editBtn.add(groupBtn);
         editBtn.add(ungroupBtn);

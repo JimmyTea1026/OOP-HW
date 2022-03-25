@@ -1,24 +1,27 @@
 package controller;
 
-import utility.*;
-import utility.curState.state;
 import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.*;
-import model.basicObject;
+import model.node;
 
-
-public class ungroupActionListener extends myActionListener{
+public class ungroupActionListener implements ActionListener{
     private JToggleButton selectBtn;
-    public ArrayList <basicObject> selectedList;
-    public ungroupActionListener(curState s, JToggleButton b, ArrayList select){
-        super(s);
+    private ArrayList <node> selectedList;
+
+    public ungroupActionListener(JToggleButton b, ArrayList<node> select){
         selectBtn = b;
         selectedList = select;
     }
     
     public void actionPerformed(ActionEvent e){
-        super.appState.currentState = state.SELECT;
         selectBtn.setSelected(true);
-    }     
+        selectBtn.doClick();
+        if(selectedList.size() == 1){
+            node root = selectedList.get(0);
+            root.ungroup();
+            selectedList.clear();
+            root = null;
+        }
+    } 
 }

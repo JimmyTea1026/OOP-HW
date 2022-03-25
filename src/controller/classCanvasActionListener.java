@@ -25,7 +25,7 @@ public class classCanvasActionListener implements MouseInputListener{
         Y = e.getY();
         // TODO Auto-generated method stub
         classObject newClassObj = new classObject(e.getX(), e.getY());
-        node newNode = new node(nodeType.type.ROOT);
+        node newNode = new node(nodeType.type.LEAF);
         newNode.setContent(newClassObj);
         newClassObj.setNodePointer(newNode);
         objList.add(newClassObj);

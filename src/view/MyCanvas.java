@@ -23,7 +23,7 @@ public class MyCanvas extends JPanel{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         for(int i = 0; i < objList.size(); i++){
-            Shape obj = objList.get(i);
+            basicObject obj = objList.get(i);
             obj.draw(g);
         }
     }
