@@ -26,7 +26,4 @@ public abstract class basicObject extends Shape{
     public node getNodePointer(){
         return this.nodePointer;
     }
-
-    
-
 }

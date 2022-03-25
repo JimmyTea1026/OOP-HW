@@ -3,16 +3,16 @@ package controller;
 import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.JPanel;
-import model.basicObject;
+import model.Line;
 import model.node;
 
 public class assciationActionListener implements ActionListener{
     private JPanel canvas;
-    private selectCanvasActionListener AL;
+    private associationCanvasActionListener AL;
 
-    public assciationActionListener(JPanel c, ArrayList <basicObject> b, ArrayList <node> sel){
+    public assciationActionListener(JPanel c, ArrayList <Line> l, ArrayList <node> sel){
         canvas = c;
-        AL = new selectCanvasActionListener(c, b, sel);
+        AL = new associationCanvasActionListener(c, l, sel);
     }
     
     public void actionPerformed(ActionEvent e){

@@ -19,11 +19,7 @@ public class selectCanvasActionListener implements MouseInputListener{
         selectedList = sel;
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        X1 = e.getX();
-        Y1 = e.getY();
-        // TODO Auto-generated method stub
+    private void selectOne(){
         selectedList.clear();
         for(int i = 0; i < objList.size(); i++){
             basicObject obj = objList.get(i);
@@ -48,19 +44,7 @@ public class selectCanvasActionListener implements MouseInputListener{
         canvas.repaint();
     }
 
-    @Override
-    public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
-        X1 = e.getX();
-        Y1 = e.getY();
-        
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
-        X2 = e.getX();
-        Y2 = e.getY();
+    private void selectMany(){
         if(X1 > X2){
             int temp = X1;
             X1 = X2;
@@ -96,6 +80,41 @@ public class selectCanvasActionListener implements MouseInputListener{
                 }
         }
         canvas.repaint();
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        X1 = e.getX();
+        Y1 = e.getY();
+        selectOne();
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        X1 = e.getX();
+        Y1 = e.getY();
+        selectOne();
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        X2 = e.getX();
+        Y2 = e.getY();
+        if(selectedList.size() != 0){
+            int xMove = X2-X1;
+            int yMove = Y2-Y1;
+            for(int i = 0; i < selectedList.size(); i++){
+                ArrayList<basicObject> allObj = selectedList.get(i).getAllObj();
+                for(int j = 0; j < allObj.size(); j++){
+                    allObj.get(j).resetXY(xMove, yMove);
+                }
+            } 
+            canvas.repaint();
+        }
+        else{
+            selectMany();
+        }
+        
     }
 
     @Override

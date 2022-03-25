@@ -9,6 +9,7 @@ public abstract class Shape {
     
     public abstract void draw(Graphics g);
     public abstract void showPort(Graphics g);
+    public abstract void resetXY(int xMove, int yMove);
 
     
     public int getx1(){
@@ -28,8 +29,5 @@ public abstract class Shape {
         depth = d;
     }
 
-    public void resetXY(int newX1,int newY1){
-        x1 = newX1;
-        y1 = newY1;
-    }
+    
 }

@@ -86,7 +86,7 @@ public class GUI {
         usecaseBtn.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
 
         selectBtn.addActionListener(new selectActionListener(canvas, objList, selectedList));
-        // associationBtn.addActionListener(new assciationActionListener(appState));
+        associationBtn.addActionListener(new assciationActionListener(canvas, lineList, selectedList));
         // generationBtn.addActionListener(new generationActionListener(appState));
         // compositionBtn.addActionListener(new compositionActionListener(appState));
         classBtn.addActionListener(new classActionListener(canvas, objList));
@@ -109,7 +109,6 @@ public class GUI {
     
     private void addCanvas(){
         canvas = new MyCanvas(objList, lineList);
-        canvas.addMouseListener(new canvasListener(appState, canvas, ShapeList, objList, lineList, selectedList));
         canvas.setBackground(Color.lightGray);
         canvas.setBounds(180, 10, 830, 650);
         cp.add(canvas);

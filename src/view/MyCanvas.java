@@ -13,7 +13,7 @@ public class MyCanvas extends JPanel{
     ArrayList <basicObject> objList;
     ArrayList <Line> lineList;
     
-    public MyCanvas(ArrayList o, ArrayList l) {
+    public MyCanvas(ArrayList<basicObject> o, ArrayList<Line> l) {
         setBackground(Color.blue);
         setSize(100, 100);    
         objList = o;
