@@ -10,9 +10,9 @@ public class generationActionListener implements ActionListener{
     private JPanel canvas;
     private generationCanvasActionListener AL;
 
-    public generationActionListener(JPanel c, ArrayList <Line> l, ArrayList <node> sel){
+    public generationActionListener(JPanel c, ArrayList <Line> l){
         canvas = c;
-        AL = new generationCanvasActionListener(c, l, sel);
+        AL = new generationCanvasActionListener(c, l);
     }
     
     public void actionPerformed(ActionEvent e){

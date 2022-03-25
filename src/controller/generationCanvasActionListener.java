@@ -5,17 +5,14 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.event.MouseInputListener;
 import model.Line;
-import model.node;
 
 public class generationCanvasActionListener implements MouseInputListener{
     private JPanel canvas;
     private ArrayList<Line> lineList;
-    private ArrayList<node> selectedList;
 
-    public generationCanvasActionListener(JPanel c, ArrayList<Line> l, ArrayList<node> sel) {
+    public generationCanvasActionListener(JPanel c, ArrayList<Line> l) {
         canvas = c;
         lineList = l;
-        selectedList = sel;
     }
 
     @Override

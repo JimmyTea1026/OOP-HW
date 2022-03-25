@@ -10,9 +10,9 @@ public class assciationActionListener implements ActionListener{
     private JPanel canvas;
     private associationCanvasActionListener AL;
 
-    public assciationActionListener(JPanel c, ArrayList <Line> l, ArrayList <node> sel){
+    public assciationActionListener(JPanel c, ArrayList <Line> l){
         canvas = c;
-        AL = new associationCanvasActionListener(c, l, sel);
+        AL = new associationCanvasActionListener(c, l);
     }
     
     public void actionPerformed(ActionEvent e){

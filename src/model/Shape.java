@@ -5,7 +5,6 @@ import java.awt.Graphics;
 public abstract class Shape {
     protected int x1, x2, y1, y2;
     protected int depth;
-    protected boolean grouped;
     
     public abstract void draw(Graphics g);
     public abstract void showPort(Graphics g);
