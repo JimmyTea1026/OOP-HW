@@ -3,7 +3,7 @@ package model;
 import java.awt.Graphics;
 
 public class classObject extends basicObject{
-
+	int[][] port = new int[4][2];
     public classObject(int x1, int y1) {
 		this.width = 100;
 		this.height = 120;
@@ -20,6 +20,15 @@ public class classObject extends basicObject{
 		this.x2 = x1 + width;
 		this.y2 = y1 + height;
     }
+
+	public int[] getPortPos(int i){
+		int ret[] = new int[2];
+		ret[0] = port[i][0];
+		ret[1] = port[i][1];
+
+		return ret;
+    }
+
 
     @Override
 	public void draw(Graphics g) {
@@ -47,6 +56,8 @@ public class classObject extends basicObject{
         int[] portY = {y1-offset, (y1+y2)/2-offset, y2-offset, (y1+y2)/2-offset};
         for(int i = 0; i < 4; i++){
             g.fillOval(portX[i], portY[i], 8, 8);
+			port[i][0] = portX[i];
+			port[i][1] = portY[i];
         }
     }
     

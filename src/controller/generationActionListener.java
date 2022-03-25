@@ -4,7 +4,6 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import model.Line;
-import model.node;
 
 public class generationActionListener implements ActionListener{
     private JPanel canvas;

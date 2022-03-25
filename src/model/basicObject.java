@@ -10,6 +10,7 @@ public abstract class basicObject extends Shape{
     protected node nodePointer;
     public abstract void draw(Graphics g);
     public abstract void showPort(Graphics g);
+    public abstract int[] getPortPos(int i);
 
     public void rename(String newName){
         name = newName;
