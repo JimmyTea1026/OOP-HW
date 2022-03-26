@@ -4,9 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import javax.swing.JPanel;
-
 import model.Line;
-import model.Shape;
 import model.basicObject;
 
 public class MyCanvas extends JPanel{

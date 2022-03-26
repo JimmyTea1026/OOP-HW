@@ -26,6 +26,5 @@ public abstract class Shape {
     public void setDepth(int d){
         depth = d;
     }
-
     
 }

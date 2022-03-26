@@ -13,13 +13,6 @@ public class usecaseObject extends basicObject{
         this.y2 = y1+height;
 	}
     
-    public void resetXY(int xXmove, int yMove){
-        this.x1 = x1 + xXmove;
-		this.y1 = y1 + yMove;
-		this.x2 = x1 + width;
-		this.y2 = y1 + height;
-    }
-
     @Override
 	public void draw(Graphics g) {
 		g.drawOval(x1, y1, width, height);

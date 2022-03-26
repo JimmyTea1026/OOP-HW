@@ -7,15 +7,12 @@ import model.Line;
 import model.Shape;
 import model.basicObject;
 import model.node;
-import utility.curState;
-
 import java.awt.*;
 
 public class GUI {
     public JFrame jFrame;
     public JPanel canvas;
     private Container cp;
-    public curState appState;
     private ButtonGroup btnGroup = new ButtonGroup();
     private JToggleButton selectBtn;
     public ArrayList <Shape> ShapeList = new ArrayList<Shape>();
@@ -23,8 +20,7 @@ public class GUI {
     public ArrayList <Line> lineList = new ArrayList<Line>();
     public ArrayList <node> selectedList = new ArrayList<node>();
 
-    public GUI(curState s) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException{
-        appState = s;
+    public GUI() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException{
         //設定外觀風格
         jFrame = new JFrame("UML editor"); 
         UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel");

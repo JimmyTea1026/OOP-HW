@@ -1,7 +1,6 @@
 package model;
 
 import java.awt.*;
-
 public abstract class basicObject extends Shape{
     protected String name = "undefined";
     protected int width, height;
@@ -9,9 +8,14 @@ public abstract class basicObject extends Shape{
     protected boolean selected;
     protected node nodePointer;
     protected int[][] port = new int[4][2];
-    public abstract void draw(Graphics g);
-    public abstract void resetXY(int xMove, int yMove);
 
+    public void resetXY(int xXmove, int yMove){
+        this.x1 = x1 + xXmove;
+		this.y1 = y1 + yMove;
+		this.x2 = x1 + width;
+		this.y2 = y1 + height;
+    }
+    
     public void rename(String newName){
         name = newName;
     }

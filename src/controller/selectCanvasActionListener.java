@@ -100,13 +100,14 @@ public class selectCanvasActionListener implements MouseInputListener{
     public void mouseReleased(MouseEvent e) {
         X2 = e.getX();
         Y2 = e.getY();
-        if(selectedList.size() != 0){
+        if(selectedList.size() != 0){   //move
             int xMove = X2-X1;
             int yMove = Y2-Y1;
             for(int i = 0; i < selectedList.size(); i++){
                 ArrayList<basicObject> allObj = selectedList.get(i).getAllObj();
                 for(int j = 0; j < allObj.size(); j++){
                     allObj.get(j).resetXY(xMove, yMove);
+                    allObj.get(j).setPort();
                 }
             }
             canvas.repaint();

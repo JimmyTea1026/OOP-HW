@@ -5,13 +5,12 @@ import java.awt.Graphics;
 public class associationLine extends Line {
     @Override
     public void draw(Graphics g) {
-        setPort();
         g.drawLine(port1[0]+offset, port1[1]+offset, port2[0]+offset, port2[1]+offset);
+        setPort();
         drawHead(g);
         drawPort(g);
     }
 
-    
     @Override
     public void drawHead(Graphics g) {
         int startx = port2[0]+offset;

@@ -8,7 +8,6 @@ public abstract class Line extends Shape{
     protected basicObject obj2;
     protected int[] port1, port2;
     protected int offset = 3;
-    public abstract void draw(Graphics g);
     public abstract void drawHead(Graphics g);
 
     public Line(){};

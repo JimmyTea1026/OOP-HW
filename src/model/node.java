@@ -24,6 +24,10 @@ public class node {
     public void setType(nodeType.type t){
         this.type = t;
     }
+    
+    public void addChild(node n){
+        this.childList.add(n);
+    }
 
     public nodeType.type getType(){
         return this.type;
@@ -36,10 +40,6 @@ public class node {
         else{
             return this;
         }
-    }
-
-    public void addChild(node n){
-        this.childList.add(n);
     }
 
     public ArrayList<basicObject> getAllObj(){

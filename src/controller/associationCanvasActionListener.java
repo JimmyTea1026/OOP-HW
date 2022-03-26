@@ -7,7 +7,6 @@ import javax.swing.event.MouseInputListener;
 import model.Line;
 import model.associationLine;
 import model.basicObject;
-import model.node;
 
 public class associationCanvasActionListener implements MouseInputListener{
     private JPanel canvas;
@@ -22,17 +21,10 @@ public class associationCanvasActionListener implements MouseInputListener{
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
     public void mousePressed(MouseEvent e) {
         X1 = e.getX();
         Y1 = e.getY();   
     }
-
     @Override
     public void mouseReleased(MouseEvent e) {
         X2 = e.getX();
@@ -62,6 +54,10 @@ public class associationCanvasActionListener implements MouseInputListener{
         }
         canvas.repaint();
 
+    }
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        // TODO Auto-generated method stub
     }
 
     @Override
