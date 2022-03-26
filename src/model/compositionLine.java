@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class compositionLine extends Line {
-    private int offset = 3;
+    
     @Override
     public void draw(Graphics g) {
         setPort();
@@ -24,7 +24,7 @@ public class compositionLine extends Line {
         double bodyLength = Math.sqrt(dx*dx + dy*dy);
         double ux = dx/bodyLength;
         double uy = dy/bodyLength;
-        double arrowLength = bodyLength / 20;
+        double arrowLength = 15;
         int[] triangleX = new int[3];
         int[] triangleY = new int[3];
         
