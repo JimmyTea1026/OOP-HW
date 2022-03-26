@@ -5,14 +5,19 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.event.MouseInputListener;
 import model.Line;
+import model.basicObject;
+import model.generationLine;
 
 public class generationCanvasActionListener implements MouseInputListener{
     private JPanel canvas;
     private ArrayList<Line> lineList;
+    private ArrayList<basicObject> objList;
+    private int X1, Y1, X2, Y2;
 
-    public generationCanvasActionListener(JPanel c, ArrayList<Line> l) {
+    public generationCanvasActionListener(JPanel c, ArrayList<Line> l, ArrayList <basicObject> b) {
         canvas = c;
         lineList = l;
+        objList = b;
     }
 
     @Override
@@ -23,14 +28,39 @@ public class generationCanvasActionListener implements MouseInputListener{
 
     @Override
     public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
+        X1 = e.getX();
+        Y1 = e.getY();   
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
+        X2 = e.getX();
+        Y2 = e.getY();
+        boolean getObj1 = false, getObj2 = false;
+        Line newLine = new generationLine();
+        for(int i = objList.size()-1; i >= 0; i--){
+            basicObject obj = objList.get(i);  
+            if(obj.getx1() <= X1 && X1 <= obj.getx2() &&
+                obj.gety1() <= Y1 && Y1 <= obj.gety2()){
+                    newLine.setObj1(obj);   
+                    getObj1 = true;
+                    break;
+            }
+        }
+        for(int i = objList.size()-1; i >= 0; i--){
+            basicObject obj = objList.get(i);  
+            if(obj.getx1() <= X2 && X2 <= obj.getx2() &&
+                obj.gety1() <= Y2 && Y2 <= obj.gety2()){
+                    newLine.setObj2(obj); 
+                    getObj2 = true;
+                    break;
+            }
+        }
+        if(getObj1 && getObj2){
+            lineList.add(newLine);
+        }
+        canvas.repaint();
+
     }
 
     @Override

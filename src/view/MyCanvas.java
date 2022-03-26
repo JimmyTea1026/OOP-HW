@@ -22,6 +22,11 @@ public class MyCanvas extends JPanel{
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
+        g.setColor(Color.BLACK);
+        for(int i = 0; i < lineList.size(); i++){
+            Line l = lineList.get(i);
+            l.draw(g);
+        }
         for(int i = 0; i < objList.size(); i++){
             basicObject obj = objList.get(i);
             obj.draw(g);

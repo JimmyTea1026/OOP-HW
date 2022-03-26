@@ -7,9 +7,8 @@ public abstract class Shape {
     protected int depth;
     
     public abstract void draw(Graphics g);
-    public abstract void showPort(Graphics g);
-    public abstract void resetXY(int xMove, int yMove);
-
+    public abstract void setPort();
+    public abstract void drawPort(Graphics g);
     
     public int getx1(){
         return x1;

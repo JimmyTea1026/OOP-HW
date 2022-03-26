@@ -108,7 +108,7 @@ public class selectCanvasActionListener implements MouseInputListener{
                 for(int j = 0; j < allObj.size(); j++){
                     allObj.get(j).resetXY(xMove, yMove);
                 }
-            } 
+            }
             canvas.repaint();
         }
         else{
