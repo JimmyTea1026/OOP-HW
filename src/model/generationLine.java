@@ -43,8 +43,6 @@ public class generationLine extends Line {
         squareX[3] = (int)(startx+rotatedX);
         squareY[3] = (int)(starty+rotatedY);
         
-
-
         g.setColor(Color.WHITE);
         g.drawPolygon(squareX, squareY, 4);
         g.fillPolygon(squareX, squareY, 4);
