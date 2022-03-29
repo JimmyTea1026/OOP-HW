@@ -7,8 +7,8 @@ public class compositionLine extends Line {
     
     @Override
     public void draw(Graphics g) {
-        g.drawLine(port1[0]+offset, port1[1]+offset, port2[0]+offset, port2[1]+offset);
         setPort();
+        g.drawLine(port1[0]+offset, port1[1]+offset, port2[0]+offset, port2[1]+offset);
         drawHead(g);
         drawPort(g);
     }
