@@ -1,22 +1,15 @@
 package controller;
 
-import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import model.Line;
 import model.basicObject;
 
 public class assciationActionListener extends ToolbarBtnActionListener{
-    private associationCanvasActionListener AL;
-
     public assciationActionListener(JPanel c, ArrayList <Line> l, ArrayList <basicObject> b){
         super(c);
-        AL = new associationCanvasActionListener(canvas, l, b);
+        lineList = l;
+        objList = b;
+        AL = new associationCanvasActionListener(canvas, lineList, objList);
     }
-    
-    @Override
-    public void actionPerformed(ActionEvent e){
-        canvas.removeMouseListener(canvas.getMouseListeners()[0]);
-        canvas.addMouseListener(AL);
-    }     
 }
