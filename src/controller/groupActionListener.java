@@ -5,13 +5,10 @@ import java.util.ArrayList;
 import javax.swing.*;
 import model.node;
 
-public class groupActionListener implements ActionListener{
-    private JToggleButton selectBtn;
-    private ArrayList <node> selectedList;
+public class groupActionListener extends MenuBtnActionListener{
 
     public groupActionListener(JToggleButton b, ArrayList<node> select){
-        selectBtn = b;
-        selectedList = select;
+        super(b, select);
     }
     
     public void actionPerformed(ActionEvent e){

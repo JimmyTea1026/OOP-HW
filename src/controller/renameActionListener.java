@@ -7,17 +7,15 @@ import javax.swing.*;
 import model.basicObject;
 import model.node;
 
-public class renameActionListener implements ActionListener{
-    private JToggleButton selectBtn;
-    public ArrayList <node> selectedList;
-    JPanel canvas;
+public class renameActionListener extends MenuBtnActionListener{
+    private JPanel canvas;
 
     public renameActionListener(JToggleButton b, ArrayList<node> select, JPanel c){
-        selectBtn = b;
-        selectedList = select;
+        super(b, select);
         canvas = c;
     }
     
+    @Override
     public void actionPerformed(ActionEvent e){
         selectBtn.setSelected(true);
         selectBtn.doClick();

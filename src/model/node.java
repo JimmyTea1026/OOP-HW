@@ -48,7 +48,7 @@ public class node {
         return ret;
     }
 
-    public void traverse(ArrayList<basicObject> ret){
+    private void traverse(ArrayList<basicObject> ret){
         if (this.type == nodeType.type.LEAF){
             ret.add(this.content);
             return;
