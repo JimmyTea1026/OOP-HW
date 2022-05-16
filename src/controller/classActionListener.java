@@ -5,13 +5,12 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import model.basicObject;
 
-public class classActionListener implements ActionListener{
-    private JPanel canvas;
+public class classActionListener extends ToolbarBtnActionListener{
     private classCanvasActionListener AL;
 
     public classActionListener(JPanel c, ArrayList <basicObject> b){
-        canvas = c;
-        AL = new classCanvasActionListener(c, b);
+        super(c);
+        AL = new classCanvasActionListener(canvas, b);
     }
     
     public void actionPerformed(ActionEvent e){

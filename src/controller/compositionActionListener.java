@@ -6,13 +6,12 @@ import javax.swing.JPanel;
 import model.Line;
 import model.basicObject;
 
-public class compositionActionListener implements ActionListener{
-    private JPanel canvas;
+public class compositionActionListener extends ToolbarBtnActionListener{
     private compositionCanvasActionListener AL;
 
     public compositionActionListener(JPanel c, ArrayList <Line> l, ArrayList <basicObject> b){
-        canvas = c;
-        AL = new compositionCanvasActionListener(c, l, b);
+        super(c);
+        AL = new compositionCanvasActionListener(canvas, l, b);
     }
     
     public void actionPerformed(ActionEvent e){

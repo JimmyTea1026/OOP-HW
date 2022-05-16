@@ -6,13 +6,12 @@ import javax.swing.JPanel;
 import model.Line;
 import model.basicObject;
 
-public class generationActionListener implements ActionListener{
-    private JPanel canvas;
+public class generationActionListener extends ToolbarBtnActionListener{
     private generationCanvasActionListener AL;
 
     public generationActionListener(JPanel c, ArrayList <Line> l, ArrayList <basicObject> b){
-        canvas = c;
-        AL = new generationCanvasActionListener(c, l, b);
+        super(c);
+        AL = new generationCanvasActionListener(canvas, l, b);
     }
     
     public void actionPerformed(ActionEvent e){

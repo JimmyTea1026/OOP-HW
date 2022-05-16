@@ -36,7 +36,7 @@ public class GUI {
         cp.setPreferredSize(new Dimension(1024, 680));;
         jFrame.setVisible(true); 
         this.addCanvas();
-        this.addMenuBtn();
+        this.addToolBtn();
         this.addMenuBar();
         jFrame.pack();
     }
@@ -59,7 +59,7 @@ public class GUI {
         jFrame.setJMenuBar(menuBar);
     }
 
-    private void addMenuBtn(){
+    private void addToolBtn(){
         selectBtn = new JToggleButton("select");
         JToggleButton associationBtn = new JToggleButton("association line");
         JToggleButton generationBtn = new JToggleButton("generation line");

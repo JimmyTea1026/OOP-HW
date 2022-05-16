@@ -6,15 +6,15 @@ import javax.swing.JPanel;
 import model.Line;
 import model.basicObject;
 
-public class assciationActionListener implements ActionListener{
-    private JPanel canvas;
+public class assciationActionListener extends ToolbarBtnActionListener{
     private associationCanvasActionListener AL;
 
     public assciationActionListener(JPanel c, ArrayList <Line> l, ArrayList <basicObject> b){
-        canvas = c;
-        AL = new associationCanvasActionListener(c, l, b);
+        super(c);
+        AL = new associationCanvasActionListener(canvas, l, b);
     }
     
+    @Override
     public void actionPerformed(ActionEvent e){
         canvas.removeMouseListener(canvas.getMouseListeners()[0]);
         canvas.addMouseListener(AL);

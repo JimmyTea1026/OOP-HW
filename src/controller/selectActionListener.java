@@ -7,13 +7,12 @@ import javax.swing.JPanel;
 import model.basicObject;
 import model.node;
 
-public class selectActionListener implements ActionListener{
-    private JPanel canvas;
+public class selectActionListener extends ToolbarBtnActionListener{
     private selectCanvasActionListener AL;
 
     public selectActionListener(JPanel c, ArrayList <basicObject> b, ArrayList <node> sel){
-        canvas = c;
-        AL = new selectCanvasActionListener(c, b, sel);
+        super(c);
+        AL = new selectCanvasActionListener(canvas, b, sel);
     }
     
     public void actionPerformed(ActionEvent e){
