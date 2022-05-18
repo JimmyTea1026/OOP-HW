@@ -9,5 +9,4 @@ public class App {
 }
 
 // 期末TO-DO:
-// 1. 把按鈕的actionlistener包裝成一個
 // 2. 把Magic number們包裝好

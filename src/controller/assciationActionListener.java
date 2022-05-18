@@ -8,8 +8,6 @@ import model.basicObject;
 public class assciationActionListener extends ToolbarBtnActionListener{
     public assciationActionListener(JPanel c, ArrayList <Line> l, ArrayList <basicObject> b){
         super(c);
-        lineList = l;
-        objList = b;
-        AL = new associationCanvasActionListener(canvas, lineList, objList);
+        AL = new associationCanvasActionListener(canvas, l, b);
     }
 }

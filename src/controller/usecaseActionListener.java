@@ -8,8 +8,7 @@ public class usecaseActionListener extends ToolbarBtnActionListener{
 
     public usecaseActionListener(JPanel c, ArrayList <basicObject> b){
         super(c);
-        objList = b;
-        AL = new usecaseCanvasActionListener(canvas, objList);
+        AL = new usecaseCanvasActionListener(canvas, b);
     }
   
 }

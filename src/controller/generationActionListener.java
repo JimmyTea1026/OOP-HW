@@ -9,9 +9,7 @@ public class generationActionListener extends ToolbarBtnActionListener{
 
     public generationActionListener(JPanel c, ArrayList <Line> l, ArrayList <basicObject> b){
         super(c);
-        lineList = l;
-        objList = b;
-        AL = new generationCanvasActionListener(canvas, lineList, objList);
+        AL = new generationCanvasActionListener(canvas, l, b);
     }
     
 }

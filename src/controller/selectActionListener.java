@@ -10,9 +10,7 @@ public class selectActionListener extends ToolbarBtnActionListener{
 
     public selectActionListener(JPanel c, ArrayList <basicObject> b, ArrayList <node> sel){
         super(c);
-        objList = b;
-        selectedList = sel;
-        AL = new selectCanvasActionListener(canvas, objList, selectedList);
+        AL = new selectCanvasActionListener(canvas, b, sel);
     }
 
 }
