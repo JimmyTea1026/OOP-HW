@@ -6,17 +6,17 @@ public class associationLine extends Line {
     @Override
     public void draw(Graphics g) {
         setPort();
-        g.drawLine(port1[0]+offset, port1[1]+offset, port2[0]+offset, port2[1]+offset);
+        g.drawLine(port1.getX()+offset, port1.getY()+offset, port2.getX()+offset, port2.getY()+offset);
         drawHead(g);
         drawPort(g);
     }
 
     @Override
     public void drawHead(Graphics g) {
-        int startx = port2[0]+offset;
-        int starty = port2[1]+offset;
-        int endx = port1[0];
-        int endy = port1[1];
+        int startx = port2.getX()+offset;
+        int starty = port2.getY()+offset;
+        int endx = port1.getX();
+        int endy = port1.getY();
         double dx = endx - startx;
         double dy = endy - starty;
         double bodyLength = Math.sqrt(dx*dx + dy*dy);

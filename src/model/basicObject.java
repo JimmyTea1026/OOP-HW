@@ -1,19 +1,21 @@
 package model;
 
 import java.awt.*;
+import java.util.ArrayList;
 public abstract class basicObject extends Shape{
     protected String name = "undefined";
     protected int width, height;
     protected Font font = new Font(Font.DIALOG, Font.BOLD, 14);
     protected boolean selected;
     protected node nodePointer;
-    protected int[][] port = new int[4][2];
+    protected ArrayList<port> portList = new ArrayList<port>();
 
     public void resetXY(int xXmove, int yMove){
-        this.x1 = x1 + xXmove;
-		this.y1 = y1 + yMove;
-		this.x2 = x1 + width;
-		this.y2 = y1 + height;
+        x1 = x1 + xXmove;
+		y1 = y1 + yMove;
+		x2 = x1 + width;
+		y2 = y1 + height;
+        resetPort();
     }
     
     public void rename(String newName){
@@ -32,43 +34,45 @@ public abstract class basicObject extends Shape{
         return this.nodePointer;
     }
 
-    public int[] getPortPos(String s){
-		int ret[] = new int[2];
+    public port getPortPos(String s){
         switch(s){
             case("up"):
-                ret[0] = port[0][0];
-                ret[1] = port[0][1];
-                break;
+                return portList.get(0);
             case("right"):
-                ret[0] = port[1][0];
-                ret[1] = port[1][1];
-                break;
+                return portList.get(1);
             case("down"):
-                ret[0] = port[2][0];
-                ret[1] = port[2][1];
-                break;
+                return portList.get(2);
             case("left"):
-                ret[0] = port[3][0];
-                ret[1] = port[3][1];
-                break;
+                return portList.get(3);
+            default:
+                return null;
         }
-		return ret;
+		
     }
 
     public void setPort() {
         int offset = 6;
-        // 上右下左
-        int[] portX = {(x1+x2)/2-offset, x2, (x1+x2)/2-offset, x1-offset};
-        int[] portY = {y1-offset, (y1+y2)/2-offset, y2, (y1+y2)/2-offset};
-        for(int i = 0; i < 4; i++){
-			port[i][0] = portX[i];
-			port[i][1] = portY[i];
-        }
+        port up = new port((x1+x2)/2-offset, y1-offset);
+        port right = new port(x2, (y1+y2)/2-offset);
+        port down = new port((x1+x2)/2-offset, y2);
+        port left = new port(x1-offset, (y1+y2)/2-offset);
+        portList.add(up);
+        portList.add(right);
+        portList.add(down);
+        portList.add(left);
+    }
+
+    private void resetPort(){
+        int offset = 6;
+        portList.get(0).resetXY((x1+x2)/2-offset, y1-offset);
+        portList.get(1).resetXY(x2, (y1+y2)/2-offset);
+        portList.get(2).resetXY((x1+x2)/2-offset, y2);
+        portList.get(3).resetXY(x1-offset, (y1+y2)/2-offset);
     }
 
     public void drawPort(Graphics g){
 		for(int i = 0; i < 4; i++){
-            g.fillOval(port[i][0], port[i][1], 8, 8);
+            g.fillOval(portList.get(i).getX(), portList.get(i).getY(), 8, 8);
 		}
 	}
 }
