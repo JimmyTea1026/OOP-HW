@@ -24,10 +24,9 @@ public class usecaseCanvasActionListener implements MouseInputListener{
         X = e.getX();
         Y = e.getY();
         // TODO Auto-generated method stub
-        usecaseObject newUsecaseObj = new usecaseObject(e.getX(), e.getY());
         node newNode = new node(nodeType.type.LEAF);
+        usecaseObject newUsecaseObj = new usecaseObject(e.getX(), e.getY(), newNode);
         newNode.setContent(newUsecaseObj);
-        newUsecaseObj.setNodePointer(newNode);
         objList.add(newUsecaseObj);
         int dep = objList.indexOf(newUsecaseObj);
         newUsecaseObj.setDepth(dep);

@@ -7,6 +7,3 @@ public class App {
         gui.initialGui();
     }
 }
-
-// 期末TO-DO:
-// 2. 把Magic number們包裝好

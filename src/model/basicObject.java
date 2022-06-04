@@ -1,16 +1,13 @@
 package model;
 
 import java.awt.*;
-import java.util.ArrayList;
 public abstract class basicObject extends Shape{
     protected String name = "undefined";
     protected int width, height;
     protected Font font = new Font(Font.DIALOG, Font.BOLD, 14);
-    protected boolean selected;
     protected node nodePointer;
-    protected ArrayList<port> portList = new ArrayList<port>();
-
-    public void resetXY(int xXmove, int yMove){
+    
+    public void resetXY(int xXmove, int yMove){ 
         x1 = x1 + xXmove;
 		y1 = y1 + yMove;
 		x2 = x1 + width;
@@ -22,19 +19,11 @@ public abstract class basicObject extends Shape{
         name = newName;
     }
 
-    public void beSelected(boolean b){
-        selected = b;
-    }
-
-    public void setNodePointer(node n){
-        nodePointer = n;
-    }
-
-    public node getNodePointer(){
+    public node getNodePointer(){   //override
         return this.nodePointer;
     }
 
-    public port getPortPos(String s){
+    public port getPort(String s){
         switch(s){
             case("up"):
                 return portList.get(0);
@@ -62,7 +51,7 @@ public abstract class basicObject extends Shape{
         portList.add(left);
     }
 
-    private void resetPort(){
+    public void resetPort(){
         int offset = 6;
         portList.get(0).resetXY((x1+x2)/2-offset, y1-offset);
         portList.get(1).resetXY(x2, (y1+y2)/2-offset);
@@ -75,4 +64,8 @@ public abstract class basicObject extends Shape{
             g.fillOval(portList.get(i).getX(), portList.get(i).getY(), 8, 8);
 		}
 	}
+
+    public boolean isInside(int x, int y){
+        return true;
+    }
 }

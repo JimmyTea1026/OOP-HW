@@ -4,13 +4,14 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class usecaseObject extends basicObject{
-    public usecaseObject(int x1, int y1) {
+    public usecaseObject(int x1, int y1, node n) {
 		this.width = 100;
 		this.height = 60;
 		this.x1 = x1;
 		this.y1 = y1;
         this.x2 = x1+width;
         this.y2 = y1+height;
+		this.nodePointer = n;
 	}
     
     @Override

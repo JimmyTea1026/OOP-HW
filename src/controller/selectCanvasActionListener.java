@@ -23,7 +23,7 @@ public class selectCanvasActionListener implements MouseInputListener{
         selectedList.clear();
         for(int i = 0; i < objList.size(); i++){
             basicObject obj = objList.get(i);
-            obj.beSelected(false);
+            obj.isSelected(false);
         }
         // 最新的obj在list最後面，若滑鼠位置有兩個以上的obj，會選到最後新增，也就是最上面的obj
         for(int i = objList.size()-1; i >= 0; i--){
@@ -35,7 +35,7 @@ public class selectCanvasActionListener implements MouseInputListener{
                 root = obj.getNodePointer().getRoot();
                 allObj = root.getAllObj();
                 for(int j = 0; j < allObj.size(); j++){
-                    allObj.get(j).beSelected(true);
+                    allObj.get(j).isSelected(true);
                 }
                 selectedList.add(root);
                 break;
@@ -59,7 +59,7 @@ public class selectCanvasActionListener implements MouseInputListener{
         selectedList.clear();
         for(int i = 0; i < objList.size(); i++){
             basicObject obj = objList.get(i);
-            obj.beSelected(false);
+            obj.isSelected(false);
         }
 
         for(int i = 0; i < objList.size(); i++){
@@ -71,7 +71,7 @@ public class selectCanvasActionListener implements MouseInputListener{
                     root = obj.getNodePointer().getRoot();
                     allObj = root.getAllObj();
                     for(int j = 0; j < allObj.size(); j++){
-                        allObj.get(j).beSelected(true);
+                        allObj.get(j).isSelected(true);
                     }
 
                     if(!selectedList.contains(root)){
