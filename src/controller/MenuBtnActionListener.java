@@ -3,15 +3,15 @@ package controller;
 import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.*;
-import model.node;
+import model.Shape;
 
 public abstract class MenuBtnActionListener implements ActionListener{
     protected JToggleButton selectBtn;
-    protected ArrayList <node> selectedList;
+    protected ArrayList <Shape> shapeList;
 
-    public MenuBtnActionListener(JToggleButton b, ArrayList<node> select){
+    public MenuBtnActionListener(JToggleButton b, ArrayList<Shape> s){
         selectBtn = b;
-        selectedList = select;
+        shapeList = s;
     }
     
     public abstract void actionPerformed(ActionEvent e);

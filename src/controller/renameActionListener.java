@@ -4,14 +4,16 @@ import view.renameWindow;
 import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.*;
+
+import model.Shape;
 import model.basicObject;
 import model.node;
 
 public class renameActionListener extends MenuBtnActionListener{
     private JPanel canvas;
 
-    public renameActionListener(JToggleButton b, ArrayList<node> select, JPanel c){
-        super(b, select);
+    public renameActionListener(JToggleButton b, ArrayList<Shape> s, JPanel c){
+        super(b, s);
         canvas = c;
     }
     
@@ -19,14 +21,18 @@ public class renameActionListener extends MenuBtnActionListener{
     public void actionPerformed(ActionEvent e){
         selectBtn.setSelected(true);
         selectBtn.doClick();
+        ArrayList<Shape> selectedList = new ArrayList<Shape>();
+        for(int i = 0; i < shapeList.size(); i++){
+            Shape s = shapeList.get(i);
+            if(s.selectedStatus()){
+                selectedList.add(s);
+            }
+        }
         if(selectedList.size() == 1){
-            ArrayList <basicObject> n = selectedList.get(0).getAllObj();
-            if (n.size() == 1){
-                renameWindow renameWindow = new renameWindow();
-                String objname = renameWindow.getObjName();
-                if(objname != null){
-                    n.get(0).rename(objname);
-                }
+            renameWindow renameWindow = new renameWindow();
+            String objname = renameWindow.getObjName();
+            if(objname != null){
+                selectedList.get(0).rename(objname);
             }
             canvas.repaint();
         }

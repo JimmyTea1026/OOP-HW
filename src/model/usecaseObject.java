@@ -12,6 +12,7 @@ public class usecaseObject extends basicObject{
         this.x2 = x1+width;
         this.y2 = y1+height;
 		this.nodePointer = n;
+		setPort();
 	}
     
     @Override
@@ -23,7 +24,6 @@ public class usecaseObject extends basicObject{
 		g.setFont(font);	
 		g.drawString(name, x1 + 18, y1 + 35);
 
-        setPort();
 		if (selected){
 			drawPort(g);
 		}

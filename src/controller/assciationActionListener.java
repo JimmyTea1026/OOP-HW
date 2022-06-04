@@ -2,12 +2,10 @@ package controller;
 
 import java.util.ArrayList;
 import javax.swing.JPanel;
-import model.Line;
-import model.basicObject;
-
+import model.Shape;
 public class assciationActionListener extends ToolbarBtnActionListener{
-    public assciationActionListener(JPanel c, ArrayList <Line> l, ArrayList <basicObject> b){
+    public assciationActionListener(JPanel c, ArrayList <Shape> s){
         super(c);
-        AL = new associationCanvasActionListener(canvas, l, b);
+        AL = new associationCanvasActionListener(canvas, s);
     }
 }

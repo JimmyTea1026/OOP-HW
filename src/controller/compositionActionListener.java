@@ -3,13 +3,14 @@ package controller;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import model.Line;
-import model.basicObject;
+import model.Shape;
+
 
 public class compositionActionListener extends ToolbarBtnActionListener{
 
-    public compositionActionListener(JPanel c, ArrayList <Line> l, ArrayList <basicObject> b){
+    public compositionActionListener(JPanel c, ArrayList <Shape> s){
         super(c);
-        AL = new compositionCanvasActionListener(canvas, l, b);
+        AL = new compositionCanvasActionListener(canvas, s);
     }
        
 }

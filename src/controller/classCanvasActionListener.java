@@ -5,18 +5,18 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.event.MouseInputListener;
 import utility.nodeType;
-import model.basicObject;
+import model.Shape;
 import model.classObject;
 import model.node;
 
 public class classCanvasActionListener implements MouseInputListener{
-    private ArrayList <basicObject> objList;
+    private ArrayList <Shape> shapeList;
     private JPanel canvas;
     int X, Y;
 
-    public classCanvasActionListener(JPanel c, ArrayList <basicObject> b){
+    public classCanvasActionListener(JPanel c, ArrayList <Shape> s){
         canvas = c;
-        objList = b;
+        shapeList = s;
     }
 
     @Override
@@ -27,8 +27,8 @@ public class classCanvasActionListener implements MouseInputListener{
         node newNode = new node(nodeType.type.LEAF);
         classObject newClassObj = new classObject(e.getX(), e.getY(), newNode);
         newNode.setContent(newClassObj);
-        objList.add(newClassObj);
-        int dep = objList.indexOf(newClassObj);
+        shapeList.add(newClassObj);
+        int dep = shapeList.indexOf(newClassObj);
         newClassObj.setDepth(dep);
         
         canvas.repaint();

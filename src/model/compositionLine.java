@@ -5,26 +5,25 @@ import java.awt.Graphics;
 
 public class compositionLine extends Line {
 
-    public compositionLine(basicObject obj1, basicObject obj2){
-        this.obj1 = obj1;
-        this.obj2 = obj2;
-        
+    public compositionLine(Shape s1, Shape s2){
+        this.s1 = s1;
+        this.s2 = s2;
     }
 
     @Override
     public void draw(Graphics g) {
         setPort();
-        g.drawLine(portList.get(1).getX()+offset, portList.get(1).getY()+offset, portList.get(2).getX()+offset, portList.get(2).getY()+offset);
+        g.drawLine(portList.get(0).getX()+offset, portList.get(0).getY()+offset, portList.get(1).getX()+offset, portList.get(1).getY()+offset);
         drawHead(g);
         drawPort(g);
     }
 
     @Override
     public void drawHead(Graphics g) {
-        int startx = portList.get(2).getX() + offset;
-        int starty = portList.get(2).getY() + offset;
-        int endx = portList.get(1).getX();
-        int endy = portList.get(1).getY();
+        int startx = portList.get(1).getX() + offset;
+        int starty = portList.get(1).getY() + offset;
+        int endx = portList.get(0).getX();
+        int endy = portList.get(0).getY();
         double dx = endx - startx;
         double dy = endy - starty;
         double bodyLength = Math.sqrt(dx*dx + dy*dy);

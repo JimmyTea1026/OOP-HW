@@ -2,13 +2,13 @@ package controller;
 
 import java.util.ArrayList;
 import javax.swing.JPanel;
-import model.basicObject;
+import model.Shape;
 
 public class usecaseActionListener extends ToolbarBtnActionListener{
 
-    public usecaseActionListener(JPanel c, ArrayList <basicObject> b){
+    public usecaseActionListener(JPanel c, ArrayList <Shape> s){
         super(c);
-        AL = new usecaseCanvasActionListener(canvas, b);
+        AL = new usecaseCanvasActionListener(canvas, s);
     }
   
 }

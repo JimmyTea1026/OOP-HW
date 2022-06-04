@@ -4,37 +4,36 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public abstract class Line extends Shape{
-    protected basicObject obj1;
-    protected basicObject obj2;
+    protected Shape s1;
+    protected Shape s2;
     protected int offset = 3;
     public abstract void drawHead(Graphics g);
 
     public void setPort(){
-        String obj1PortPos = null, obj2PortPos = null;
-        if(obj1.gety1() > obj2.gety2()){        // 2在1上面
-            
-            obj1PortPos = "up";
-            obj2PortPos = "down";
+        int s1Port = 0, s2Port = 0; //0:up   1:right   2:down  3: left
+        if(s1.gety1() > s2.gety2()){        // 2在1上面
+            s1Port = 0;
+            s2Port = 2;
         }   
-        else if(obj1.gety2() < obj2.gety1()){   // 2在1下面
+        else if(s1.gety2() < s2.gety1()){   // 2在1下面
             
-            obj1PortPos = "down";
-            obj2PortPos = "up";
+            s1Port = 2;
+            s2Port = 0;
         }
         else{   // 2 和 1 在同一高度
-            if(obj1.getx1() > obj2.getx1()){    // 2在1左邊
+            if(s1.getx1() > s2.getx1()){    // 2在1左邊
                 
-                obj1PortPos = "left";
-                obj2PortPos = "right";
+                s1Port = 3;
+                s2Port = 1;
             }
-            else if(obj1.getx1() < obj2.getx1()){    // 2在1右邊
+            else if(s1.getx1() < s2.getx1()){    // 2在1右邊
                 
-                obj1PortPos = "right";
-                obj2PortPos = "left";
+                s1Port = 1;
+                s2Port = 3;
             }
         }
-        portList.add(obj1.getPort(obj1PortPos));
-        portList.add(obj2.getPort(obj2PortPos));
+        portList.add(0, s1.getPort(s1Port));
+        portList.add(1, s2.getPort(s2Port));
     }
 
     public void drawPort(Graphics g) {

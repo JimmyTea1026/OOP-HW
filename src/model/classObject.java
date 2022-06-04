@@ -13,6 +13,7 @@ public class classObject extends basicObject{
 		this.x2 = x1 + width;
 		this.y2 = y1 + height;
 		this.nodePointer = n;
+		setPort();
 	}
 
     @Override
@@ -32,7 +33,6 @@ public class classObject extends basicObject{
 		double empty = (Math.abs(x1-x2) - stringWidth)/2;
 		g.setFont(font);	
 		g.drawString(name, x1 + (int)empty, y1 + 25);
-		setPort();
 		if (selected){
 			drawPort(g);
 		}

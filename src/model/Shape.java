@@ -16,7 +16,7 @@ public abstract class Shape {
     // perlocating up for basicObject
     public void resetXY(){};
     public node getNodePointer(){ return null;};
-    public void rename(){};
+    public void rename(String s){};
     public boolean isInside(int x, int y){return false;};
     
     public int getx1(){
@@ -32,12 +32,24 @@ public abstract class Shape {
         return y2;
     }
 
+    public port getPort(int idx){
+        return portList.get(idx);
+    }
+
     public void setDepth(int d){
         depth = d;
     }
 
+    public int getDepth(){
+        return depth;
+    }
+
     public void isSelected(boolean b){
         selected = b;
+    }
+
+    public boolean selectedStatus(){
+        return selected;
     }
     
 }

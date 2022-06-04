@@ -3,14 +3,13 @@ package controller;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
-import model.basicObject;
-import model.node;
+import model.Shape;
 
 public class selectActionListener extends ToolbarBtnActionListener{
 
-    public selectActionListener(JPanel c, ArrayList <basicObject> b, ArrayList <node> sel){
+    public selectActionListener(JPanel c, ArrayList <Shape> s){
         super(c);
-        AL = new selectCanvasActionListener(canvas, b, sel);
+        AL = new selectCanvasActionListener(canvas, s);
     }
 
 }

@@ -53,10 +53,10 @@ public abstract class basicObject extends Shape{
 
     public void resetPort(){
         int offset = 6;
-        portList.get(0).resetXY((x1+x2)/2-offset, y1-offset);
-        portList.get(1).resetXY(x2, (y1+y2)/2-offset);
-        portList.get(2).resetXY((x1+x2)/2-offset, y2);
-        portList.get(3).resetXY(x1-offset, (y1+y2)/2-offset);
+        portList.get(0).resetPos((x1+x2)/2-offset, y1-offset);  //up
+        portList.get(1).resetPos(x2, (y1+y2)/2-offset);         //right
+        portList.get(2).resetPos((x1+x2)/2-offset, y2);         // down
+        portList.get(3).resetPos(x1-offset, (y1+y2)/2-offset);  //left
     }
 
     public void drawPort(Graphics g){
@@ -66,6 +66,10 @@ public abstract class basicObject extends Shape{
 	}
 
     public boolean isInside(int x, int y){
-        return true;
+        if(this.getx1() <= x && x <= this.getx2() &&
+            this.gety1() <= y && y <= this.gety2()){
+                return true;
+            }
+        return false;
     }
 }

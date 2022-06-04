@@ -4,30 +4,28 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import javax.swing.JPanel;
-import model.Line;
-import model.basicObject;
+
+import model.Shape;
 
 public class MyCanvas extends JPanel{
-    ArrayList <basicObject> objList;
-    ArrayList <Line> lineList;
+    ArrayList <Shape> shapeList;
     
-    public MyCanvas(ArrayList<basicObject> o, ArrayList<Line> l) {
+    public MyCanvas(ArrayList<Shape> s) {
         setBackground(Color.blue);
-        setSize(100, 100);    
-        objList = o;
-        lineList = l;   
+        setSize(100, 100);     
+        shapeList = s;
     }    
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         g.setColor(Color.BLACK);
-        for(int i = 0; i < lineList.size(); i++){
-            Line l = lineList.get(i);
-            l.draw(g);
+        for(int i = 0; i < shapeList.size(); i++){
+            if(shapeList.get(i).getDepth() == -1){
+                shapeList.get(i).draw(g);
+            }
         }
-        for(int i = 0; i < objList.size(); i++){
-            basicObject obj = objList.get(i);
-            obj.draw(g);
+        for(int i = 0; i < shapeList.size(); i++){
+            shapeList.get(i).draw(g);
         }
     }
     

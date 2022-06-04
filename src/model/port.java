@@ -6,7 +6,7 @@ public class port {
         this.x = px;
         this.y = py;
     }
-    public void resetXY(int px, int py){
+    public void resetPos(int px, int py){
         this.x = px;
         this.y = py;
     }

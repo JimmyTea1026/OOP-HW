@@ -16,9 +16,6 @@ public class GUI {
     private ButtonGroup btnGroup = new ButtonGroup();
     private JToggleButton selectBtn;
     public ArrayList <Shape> ShapeList = new ArrayList<Shape>();
-    public ArrayList <basicObject> objList = new ArrayList<basicObject>();
-    public ArrayList <Line> lineList = new ArrayList<Line>();
-    public ArrayList <node> selectedList = new ArrayList<node>();
 
     public GUI() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException{
         //設定外觀風格
@@ -47,9 +44,9 @@ public class GUI {
         JMenuItem ungroupBtn = new JMenuItem("ungroup");
         JMenuItem renameBtn = new JMenuItem("rename");
         JMenuBar menuBar = new JMenuBar(); 
-        groupBtn.addActionListener(new groupActionListener(selectBtn, selectedList));
-        ungroupBtn.addActionListener(new ungroupActionListener(selectBtn, selectedList));
-        renameBtn.addActionListener(new renameActionListener(selectBtn, selectedList, canvas));
+        groupBtn.addActionListener(new groupActionListener(selectBtn, ShapeList));
+        ungroupBtn.addActionListener(new ungroupActionListener(selectBtn, ShapeList));
+        renameBtn.addActionListener(new renameActionListener(selectBtn, ShapeList, canvas));
 
         editBtn.add(groupBtn);
         editBtn.add(ungroupBtn);
@@ -81,12 +78,12 @@ public class GUI {
         classBtn.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
         usecaseBtn.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
 
-        selectBtn.addActionListener(new selectActionListener(canvas, objList, selectedList));
-        associationBtn.addActionListener(new assciationActionListener(canvas, lineList, objList));
-        generationBtn.addActionListener(new generationActionListener(canvas, lineList, objList));
-        compositionBtn.addActionListener(new compositionActionListener(canvas, lineList, objList));
-        classBtn.addActionListener(new classActionListener(canvas, objList));
-        usecaseBtn.addActionListener(new usecaseActionListener(canvas, objList));
+        selectBtn.addActionListener(new selectActionListener(canvas, ShapeList));
+        associationBtn.addActionListener(new assciationActionListener(canvas, ShapeList));
+        generationBtn.addActionListener(new generationActionListener(canvas, ShapeList));
+        compositionBtn.addActionListener(new compositionActionListener(canvas, ShapeList));
+        classBtn.addActionListener(new classActionListener(canvas, ShapeList));
+        usecaseBtn.addActionListener(new usecaseActionListener(canvas, ShapeList));
 
         btnGroup.add(selectBtn);
         btnGroup.add(associationBtn);
@@ -104,8 +101,8 @@ public class GUI {
     }
     
     private void addCanvas(){
-        canvas = new MyCanvas(objList, lineList);
-        canvas.addMouseListener(new selectCanvasActionListener(canvas, objList, selectedList));
+        canvas = new MyCanvas(ShapeList);
+        canvas.addMouseListener(new selectCanvasActionListener(canvas, ShapeList));
         canvas.setBackground(Color.lightGray);
         canvas.setBounds(180, 10, 830, 650);
         cp.add(canvas);

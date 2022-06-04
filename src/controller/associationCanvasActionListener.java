@@ -4,20 +4,17 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.event.MouseInputListener;
-import model.Line;
+import model.Shape;
 import model.associationLine;
-import model.basicObject;
 
 public class associationCanvasActionListener implements MouseInputListener{
     private JPanel canvas;
-    private ArrayList<Line> lineList;
-    private ArrayList<basicObject> objList;
+    private ArrayList<Shape> shapeList;
     private int X1, Y1, X2, Y2;
 
-    public associationCanvasActionListener(JPanel c, ArrayList<Line> l, ArrayList <basicObject> b) {
+    public associationCanvasActionListener(JPanel c, ArrayList<Shape> s) {
         canvas = c;
-        lineList = l;
-        objList = b;
+        shapeList = s;
     }
 
     @Override
@@ -29,28 +26,23 @@ public class associationCanvasActionListener implements MouseInputListener{
     public void mouseReleased(MouseEvent e) {
         X2 = e.getX();
         Y2 = e.getY();
-        boolean getObj1 = false, getObj2 = false;
-        Line newLine = new associationLine();
-        for(int i = objList.size()-1; i >= 0; i--){
-            basicObject obj = objList.get(i);  
-            if(obj.getx1() <= X1 && X1 <= obj.getx2() &&
-                obj.gety1() <= Y1 && Y1 <= obj.gety2()){
-                    newLine.setObj1(obj);   
-                    getObj1 = true;
-                    break;
+        Shape s1 = null, s2 = null;
+        boolean gets1 = false, gets2 = false;
+        for(int i = shapeList.size()-1; i >= 0; i--){
+            Shape s = shapeList.get(i);  
+            if(s.isInside(X1, Y1) && !gets1){ 
+                gets1 = true;
+                s1 = s;
+            }
+            else if(s.isInside(X2, Y2) && !gets2){ 
+                gets2 = true;
+                s2 = s;
             }
         }
-        for(int i = objList.size()-1; i >= 0; i--){
-            basicObject obj = objList.get(i);  
-            if(obj.getx1() <= X2 && X2 <= obj.getx2() &&
-                obj.gety1() <= Y2 && Y2 <= obj.gety2()){
-                    newLine.setObj2(obj); 
-                    getObj2 = true;
-                    break;
-            }
-        }
-        if(getObj1 && getObj2){
-            lineList.add(newLine);
+        if(gets1 && gets2){
+            Shape newLine = new associationLine(s1, s2);
+            newLine.setDepth(-1);
+            shapeList.add(newLine);
         }
         canvas.repaint();
 
