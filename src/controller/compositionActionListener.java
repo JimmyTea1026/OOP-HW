@@ -2,7 +2,6 @@ package controller;
 
 import java.util.ArrayList;
 import javax.swing.JPanel;
-import model.Line;
 import model.Shape;
 
 

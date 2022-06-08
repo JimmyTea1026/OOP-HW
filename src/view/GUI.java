@@ -3,10 +3,7 @@ package view;
 import javax.swing.*;
 import java.util.ArrayList;
 import controller.*;
-import model.Line;
 import model.Shape;
-import model.basicObject;
-import model.node;
 import java.awt.*;
 
 public class GUI {
